@@ -159,6 +159,8 @@
   <!-- Ingredients: PRE Lite vs PRE Classic -->
   <section id="ingredients" class="pt-2 pb-16 bg-white dark:bg-arcade-panel">
     <div class="max-w-7xl mx-auto px-4">
+
+      <!-- Transparency block -->
       <div class="mt-6 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-center p-6">
           <div class="md:col-span-2">
@@ -173,6 +175,24 @@
         </div>
       </div>
 
+      <!-- MOVED HERE: Science-informed formulation (text + image) ABOVE labels -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+        <!-- Left 3/5: text -->
+        <div class="md:col-span-3">
+          <h2 class="font-display text-2xl md:text-3xl font-bold">Science-informed formulation</h2>
+          <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
+            Every ingredient is chosen based on proven, human studies—not marketing fads. We're 100% transparent about our science and will never make exaggerated or illegal health claims. We just make what works.
+          </p>
+        </div>
+        <!-- Right 2/5: image slot -->
+        <div class="md:col-span-2 flex justify-end items-start">
+          <div class="bg-white dark:bg-arcade-panel w-1/2 aspect-square grid place-items-center dark:shadow-arcade overflow-hidden" aria-hidden="true">
+            <img src="run.png" alt="Illustration for scientific evidence" class="w-full h-full object-cover pixel-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Nutrition labels -->
       <div class="mt-10 grid md:grid-cols-2 gap-8">
         <!-- PRE Lite -->
         <article class="pixel-card bg-white dark:bg-arcade-panel p-6 dark:shadow-arcade">
@@ -192,9 +212,7 @@
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">L-Tyrosine</td><td class="py-2 pr-4">1500 mg</td><td class="py-2">&dagger;</td></tr>
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Beta-Alanine</td><td class="py-2 pr-4">800 mg</td><td class="py-2">&dagger;</td></tr>
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Taurine</td><td class="py-2 pr-4">1000 mg</td><td class="py-2">&dagger;</td></tr>
-                <!-- Removed Sodium & Potassium per request -->
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Magnesium</td><td class="py-2 pr-4">70 mg</td><td class="py-2">20%</td></tr>
-                <!-- Vitamins -->
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Vitamin B6</td><td class="py-2 pr-4">3.4 mg</td><td class="py-2">200%</td></tr>
                 <tr><td class="py-2 pr-4">Vitamin B12</td><td class="py-2 pr-4">4.8 µg</td><td class="py-2">200%</td></tr>
               </tbody>
@@ -220,9 +238,7 @@
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">L-Tyrosine</td><td class="py-2 pr-4">2000 mg</td><td class="py-2">&dagger;</td></tr>
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Beta-Alanine</td><td class="py-2 pr-4">3200 mg</td><td class="py-2">&dagger;</td></tr>
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Taurine</td><td class="py-2 pr-4">1500 mg</td><td class="py-2">&dagger;</td></tr>
-                <!-- Removed Sodium & Potassium per request -->
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Magnesium</td><td class="py-2 pr-4">105 mg</td><td class="py-2">30%</td></tr>
-                <!-- Vitamins -->
                 <tr class="border-b border-slate-200 dark:border-arcade-line"><td class="py-2 pr-4">Vitamin B6</td><td class="py-2 pr-4">3.4 mg</td><td class="py-2">200%</td></tr>
                 <tr><td class="py-2 pr-4">Vitamin B12</td><td class="py-2 pr-4">4.8 µg</td><td class="py-2">200%</td></tr>
               </tbody>
@@ -239,7 +255,7 @@
   <!-- Science / Evidence -->
   <section id="science" class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Suggested use stays first -->
+      <!-- Suggested use stays; (the science text+image was moved above) -->
       <div class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
         <h3 class="font-semibold text-sm">Suggested use</h3>
         <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm">Mix 1 scoop with 8–12 oz of water 20–30 minutes before training. Do not exceed 1 serving in 24 hours.</p>
@@ -247,23 +263,6 @@
           <li>Not recommended for children, pregnant women, or those sensitive to caffeine.</li>
           <li>Consult a healthcare professional before use if you have a medical condition.</li>
         </ul>
-      </div>
-
-      <!-- Then Science row: Text left 3/5, Image right 2/5 -->
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
-        <!-- Left 3/5: text -->
-        <div class="md:col-span-3">
-          <h2 class="font-display text-2xl md:text-3xl font-bold">Science-informed formulation</h2>
-          <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
-            Every ingredient is chosen based on proven, human studies—not marketing fads. We're 100% transparent about our science and will never make exaggerated or illegal health claims. We just make what works.
-          </p>
-        </div>
-        <!-- Right 2/5: image slot -->
-        <div class="md:col-span-2 flex justify-end items-start">
-          <div class="bg-white dark:bg-arcade-panel w-1/2 aspect-square grid place-items-center dark:shadow-arcade overflow-hidden" aria-hidden="true">
-            <img src="run.png" alt="Illustration for scientific evidence" class="w-full h-full object-cover pixel-img">
-          </div>
-        </div>
       </div>
     </div>
   </section>

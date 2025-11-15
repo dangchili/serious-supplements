@@ -160,13 +160,17 @@
   <section id="ingredients" class="pt-2 pb-16 bg-white dark:bg-arcade-panel">
     <div class="max-w-7xl mx-auto px-4">
 
-      <!-- Transparency block -->
+      <!-- Transparency block (image left 2/5, text right 3/5) -->
       <div class="mt-6 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-center p-6">
-          <div class="md:col-span-2">
-            <img src="press.png" alt="Illustration for ingredient transparency" class="w-full h-full object-contain pixel-img">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch p-6">
+          <!-- Image (no green frame) -->
+          <div class="md:col-span-2 h-full w-full">
+            <div class="h-full w-full overflow-hidden">
+              <img src="press.png" alt="Illustration for ingredient transparency" class="w-full h-full object-contain pixel-img">
+            </div>
           </div>
-          <div class="md:col-span-3">
+          <!-- Text -->
+          <div class="md:col-span-3 h-full flex flex-col justify-center">
             <h2 class="font-display text-2xl md:text-3xl font-bold">Transparent ingredients</h2>
             <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300">
               We don't hide behind "proprietary blends." We believe in 100% transparency, so you see every single ingredient and its exact dose. Just clean, effective formulas you can trust.
@@ -175,19 +179,21 @@
         </div>
       </div>
 
-      <!-- MOVED HERE: Science-informed formulation (text + image) ABOVE labels -->
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
-        <!-- Left 3/5: text -->
-        <div class="md:col-span-3">
-          <h2 class="font-display text-2xl md:text-3xl font-bold">Science-informed formulation</h2>
-          <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
-            Every ingredient is chosen based on proven, human studies—not marketing fads. We're 100% transparent about our science and will never make exaggerated or illegal health claims. We just make what works.
-          </p>
-        </div>
-        <!-- Right 2/5: image slot -->
-        <div class="md:col-span-2 flex justify-end items-start">
-          <div class="bg-white dark:bg-arcade-panel w-1/2 aspect-square grid place-items-center dark:shadow-arcade overflow-hidden" aria-hidden="true">
-            <img src="run.png" alt="Illustration for scientific evidence" class="w-full h-full object-cover pixel-img">
+      <!-- Scientific formulation (text left 3/5, image right 2/5) -->
+      <div class="mt-8 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch p-6">
+          <!-- Text -->
+          <div class="md:col-span-3 h-full flex flex-col justify-center">
+            <h2 class="font-display text-2xl md:text-3xl font-bold">Scientific formulation</h2>
+            <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
+              Every ingredient is chosen based on proven, human studies—not marketing fads. We're 100% transparent about our science and will never make exaggerated or illegal health claims. We just make what works.
+            </p>
+          </div>
+          <!-- Image (no green frame) -->
+          <div class="md:col-span-2 h-full w-full">
+            <div class="h-full w-full overflow-hidden">
+              <img src="run.png" alt="Illustration for scientific evidence" class="w-full h-full object-contain pixel-img">
+            </div>
           </div>
         </div>
       </div>
@@ -255,7 +261,7 @@
   <!-- Science / Evidence -->
   <section id="science" class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Suggested use stays; (the science text+image was moved above) -->
+      <!-- Suggested use -->
       <div class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
         <h3 class="font-semibold text-sm">Suggested use</h3>
         <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm">Mix 1 scoop with 8–12 oz of water 20–30 minutes before training. Do not exceed 1 serving in 24 hours.</p>

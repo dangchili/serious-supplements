@@ -121,24 +121,40 @@
   <!-- Benefits -->
   <section id="benefits" class="pt-16 pb-2">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-display text-2xl md:text-3xl font-bold">Get notified at launch</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-bold">Our launch lineup</h2>
 
-      <!-- Product image placeholders -->
-      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
-          <img src="Haw.png" alt="First product flavor" class="w-full h-full object-cover pixel-img">
-        </div>
-        <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
-          <img src="Plum.png" alt="Second product flavor" class="w-full h-full object-cover pixel-img">
-        </div>
-        <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
-          <img src="orange.png" alt="Third product flavor" class="w-full h-full object-cover pixel-img">
-        </div>
-        <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
-          <img src="Game.png" alt="Fourth product flavor" class="w-full h-full object-cover pixel-img">
-        </div>
+      <!-- Product image placeholders (now clickable with captions) -->
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <a href="products.html" class="group block" aria-label="View Pre-Workout products">
+          <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
+            <img src="Haw.png" alt="Pre-Workout" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
+          </div>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Pre-Workout</p>
+        </a>
+        <!-- Card 2 -->
+        <a href="products.html" class="group block" aria-label="View Gaming products">
+          <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
+            <img src="Game.png" alt="Gaming" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
+          </div>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Gaming</p>
+        </a>
+        <!-- Card 3 -->
+        <a href="products.html" class="group block" aria-label="View Bundles">
+          <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
+            <img src="Plum.png" alt="Bundles" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
+          </div>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Bundles</p>
+        </a>
+        <!-- Card 4 -->
+        <a href="products.html" class="group block" aria-label="View Apparel">
+          <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
+            <img src="orange.png" alt="Apparel" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
+          </div>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">APPAREL</p>
+        </a>
       </div>
-        
+
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <article class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
           <h3 class="font-semibold text-base">Sustained Energy</h3>
@@ -163,11 +179,9 @@
       <!-- Transparency block (image left 2/5, text right 3/5) -->
       <div class="mt-6 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch p-6">
-          <!-- Image reduced to half, centered (no green frame) -->
           <div class="md:col-span-2 h-full w-full flex items-center justify-center">
             <img src="press.png" alt="Illustration for ingredient transparency" class="w-3/4 h-auto object-contain pixel-img">
           </div>
-          <!-- Text -->
           <div class="md:col-span-3 h-full flex flex-col justify-center">
             <h2 class="font-display text-2xl md:text-3xl font-bold">Transparent ingredients</h2>
             <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300">
@@ -180,14 +194,12 @@
       <!-- Scientific formulation (text left 3/5, image right 2/5) -->
       <div class="mt-8 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch p-6">
-          <!-- Text -->
           <div class="md:col-span-3 h-full flex flex-col justify-center">
             <h2 class="font-display text-2xl md:text-3xl font-bold">Scientific formulation</h2>
             <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
               Every ingredient is chosen based on proven, human studies — not marketing fads. We're 100% transparent about our science and will never make exaggerated health claims. We just make what works.
             </p>
           </div>
-          <!-- Image reduced to half, centered (no green frame) -->
           <div class="md:col-span-2 h-full w-full flex items-center justify-center">
             <img src="run.png" alt="Illustration for scientific evidence" class="w-3/4 h-auto object-contain pixel-img">
           </div>
@@ -377,6 +389,3 @@
   </script>
 </body>
 </html>
-
-
-

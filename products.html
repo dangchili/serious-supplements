@@ -35,12 +35,11 @@
     .dark .shadow-arcade{box-shadow:0 0 12px rgba(18,194,107,.35)}
     .aspect-portrait{ aspect-ratio: 3 / 4; }
 
-    /* Minimal sidebar — clean, airy, left indicator on hover/active */
+    /* Minimal sidebar look */
     .sidebar a{
       display:block; padding:.5rem 0; text-transform:uppercase; letter-spacing:.02em;
       font-weight:600; font-size:.75rem; line-height:1rem;
-      color:#64748b; /* slate-500 */
-      border-left:4px solid transparent;
+      color:#64748b; border-left:4px solid transparent;
       transition:color .15s ease, border-color .15s ease, transform .06s ease;
     }
     .sidebar a:hover{ color:#0f172a; border-left-color:#0f172a; transform:translateX(2px); }
@@ -78,7 +77,7 @@
 
   <!-- Main: Minimal Sidebar + Content -->
   <main class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
-    <!-- LEFT SIDEBAR (minimalistic) -->
+    <!-- LEFT SIDEBAR -->
     <aside class="md:col-span-3">
       <div class="sticky top-6">
         <div class="text-xs font-black tracking-tight uppercase mb-4 flex items-center gap-2">
@@ -88,10 +87,8 @@
           <a href="#all" class="active">All</a>
           <a href="#preworkout">Pre-Workout</a>
           <a href="#hydration">Hydration</a>
-
           <a href="#protein">Protein</a>
           <a href="#basics">Basics</a>
-
           <a href="#bundles">Bundles</a>
           <a href="#samples">Samples</a>
           <a href="#apparel">Apparel</a>
@@ -104,65 +101,126 @@
       <h1 class="font-display text-2xl md:text-4xl font-extrabold">Products</h1>
       <p class="mt-3 text-sm md:text-base text-slate-300">Explore our lineup. Same clean labels, same 8-bit vibe.</p>
 
-      <!-- ALL (container for the full grid) -->
       <div id="all" class="mt-8 space-y-12">
         <!-- PRE-WORKOUT -->
         <section id="preworkout">
           <h2 class="font-display text-xl md:text-2xl">Pre-Workout</h2>
           <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <!-- SOUR PLUM -->
-            <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-              <div class="aspect-portrait grid place-items-center">
-                <img src="Plum.png" alt="SOUR PLUM Pre-Workout" class="w-full h-full object-contain">
-              </div>
-              <figcaption class="mt-3 text-xs md:text-sm text-center">
-                <span class="block">PRE-WORKOUT</span>
-                <span class="block text-[10px] md:text-xs text-slate-500">SOUR PLUM</span>
-              </figcaption>
-            </figure>
+            <a href="product-pre-sour-plum.html" class="group focus:outline-none">
+              <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade transition-transform group-hover:-translate-y-1">
+                <div class="aspect-portrait grid place-items-center overflow-hidden">
+                  <img src="Plum.png" alt="PRE-WORKOUT — Sour Plum" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="mt-3 text-xs md:text-sm text-center">
+                  <span class="block">PRE-WORKOUT</span>
+                  <span class="block text-[10px] md:text-xs text-slate-500">SOUR PLUM</span>
+                </figcaption>
+              </figure>
+            </a>
             <!-- CHINESE HAW -->
-            <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-              <div class="aspect-portrait grid place-items-center">
-                <img src="Haw.png" alt="CHINESE HAW Pre-Workout" class="w-full h-full object-contain">
-              </div>
-              <figcaption class="mt-3 text-xs md:text-sm text-center">
-                <span class="block">PRE-WORKOUT</span>
-                <span class="block text-[10px] md:text-xs text-slate-500">CHINESE HAW</span>
-              </figcaption>
-            </figure>
+            <a href="product-pre-chinese-haw.html" class="group focus:outline-none">
+              <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade transition-transform group-hover:-translate-y-1">
+                <div class="aspect-portrait grid place-items-center overflow-hidden">
+                  <img src="Haw.png" alt="PRE-WORKOUT — Chinese Haw" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="mt-3 text-xs md:text-sm text-center">
+                  <span class="block">PRE-WORKOUT</span>
+                  <span class="block text-[10px] md:text-xs text-slate-500">CHINESE HAW</span>
+                </figcaption>
+              </figure>
+            </a>
             <!-- SWEET ORANGE -->
-            <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-              <div class="aspect-portrait grid place-items-center">
-                <img src="orange.png" alt="SWEET ORANGE Pre-Workout" class="w-full h-full object-contain">
-              </div>
-              <figcaption class="mt-3 text-xs md:text-sm text-center">
-                <span class="block">PRE-WORKOUT</span>
-                <span class="block text-[10px] md:text-xs text-slate-500">SWEET ORANGE</span>
-              </figcaption>
-            </figure>
+            <a href="product-pre-sweet-orange.html" class="group focus:outline-none">
+              <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade transition-transform group-hover:-translate-y-1">
+                <div class="aspect-portrait grid place-items-center overflow-hidden">
+                  <img src="orange.png" alt="PRE-WORKOUT — Sweet Orange" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="mt-3 text-xs md:text-sm text-center">
+                  <span class="block">PRE-WORKOUT</span>
+                  <span class="block text-[10px] md:text-xs text-slate-500">SWEET ORANGE</span>
+                </figcaption>
+              </figure>
+            </a>
           </div>
         </section>
 
         <!-- GAMING + MORE COMING SOON -->
         <section class="pt-2" id="bundles">
           <h2 class="font-display text-xl md:text-2xl">Gaming & More</h2>
-          <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-8">
-            <!-- GAMING -->
-            <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-              <div class="aspect-portrait flex items-center justify-center overflow-hidden">
-                <img src="Game.png" alt="Glitch Mode Gaming Supplement" class="w-full h-full object-contain">
-              </div>
-              <figcaption class="mt-3 text-xs md:text-sm text-center">
-                <span class="block">GAMING</span>
-                <span class="block text-[10px] md:text-xs text-slate-500">MYSTERIOUS FLAVOR</span>
-              </figcaption>
-            </figure>
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <a href="product-gaming.html" class="group focus:outline-none">
+              <figure class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade transition-transform group-hover:-translate-y-1">
+                <div class="aspect-portrait grid place-items-center overflow-hidden">
+                  <img src="Game.png" alt="GAMING — Mysterious Flavor" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="mt-3 text-xs md:text-sm text-center">
+                  <span class="block">GAMING</span>
+                  <span class="block text-[10px] md:text-xs text-slate-500">MYSTERIOUS FLAVOR</span>
+                </figcaption>
+              </figure>
+            </a>
 
-            <!-- MORE COMING SOON -->
             <article class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
               <div class="aspect-portrait grid place-items-center">
                 <span class="text-slate-500 text-xs">[ MORE COMING SOON ]</span>
               </div>
             </article>
 
+            <!-- Spacer to keep grid balance on desktop -->
+            <div class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade opacity-0 pointer-events-none" aria-hidden="true">
+              <div class="aspect-portrait"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
 
+  <footer class="py-12 border-t border-slate-200 dark:border-arcade-line">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-xs md:text-sm">
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3">
+          <div class="pixel-logo"></div>
+          <span class="font-display text-sm md:text-base font-bold">SERIOUS SUPPLEMENTS</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400">© <span id="year"></span> SERIOUS SUPPLEMENTS. All rights reserved.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold">Company</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="mailto:hi@serioussupplements.com" class="hover:underline">Contact</a></li>
+          <li><a href="#" class="hover:underline">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold">Legal</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Terms</a></li>
+          <li><a href="#" class="hover:underline">Privacy</a></li>
+          <li><a href="#" class="hover:underline">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const k='theme', r=document.documentElement, b=document.getElementById('theme-toggle');
+      function set(v){ v==='dark'?r.classList.add('dark'):r.classList.remove('dark');
+        localStorage.setItem(k,v); if(b){ b.setAttribute('aria-pressed', v==='dark'); b.textContent=v==='dark'?'🕹️ Arcade':'🌞 Light';}}
+      const saved=localStorage.getItem(k);
+      if(saved){ set(saved);} else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ set('dark'); } else { set('light'); }
+      b?.addEventListener('click', ()=> set(r.classList.contains('dark') ? 'light' : 'dark'));
+    })();
+
+    (function(){
+      const k='lang', root=document.documentElement, btn=document.getElementById('lang-toggle'), menu=document.getElementById('lang-menu');
+      function setLang(v){ const map={en:'en', zh:'zh-CN'}; root.setAttribute('lang', map[v]||'en'); localStorage.setItem(k, v);
+        if(btn){ btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language'); btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language';}}
+      const saved=localStorage.getItem(k) || 'en'; setLang(saved);
+      btn?.addEventListener('click', ()=>{ const open=menu?.classList.contains('hidden')===false; menu?.classList.toggle('hidden'); btn.setAttribute('aria-expanded', (!open).toString());});
+      menu?.addEventListener('click', (e)=>{ const t=e.target.closest('[data-lang

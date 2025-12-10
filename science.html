@@ -34,6 +34,17 @@
     .dark .bg-white{background-color:#0b1020 !important}
     .dark .text-slate-900{color:#e5e7eb !important}
     .dark .shadow-arcade{box-shadow:0 0 12px rgba(18,194,107,.35)}
+
+    .pdf-thumb{display:flex; align-items:center; justify-content:center; text-align:center; padding:1rem; transition:transform .12s ease, box-shadow .12s ease;}
+    .pdf-thumb:hover{transform:translateY(-2px)}
+    .pdf-icon{width:42px;height:42px;margin-bottom:.5rem}
+    .pdf-label{font-size:.65rem}
+
+    #pdf-modal.hidden{display:none}
+    #pdf-modal .backdrop{background:rgba(0,0,0,.7)}
+    #pdf-modal .sheet{box-shadow:0 0 0 3px #fff, 4px 4px 0 0 #0c683d}
+    @media (min-width: 768px){ #pdf-frame{height:80vh} }
+    @media (max-width: 767px){ #pdf-frame{height:75vh} }
   </style>
 </head>
 <body class="bg-white dark:bg-arcade-bg text-slate-900 dark:text-slate-100 font-body pixel-bg">
@@ -59,7 +70,6 @@
           <button data-lang="zh" class="block w-full text-left px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">中文</button>
         </div>
       </div>
-      <!-- FAQ goes to main page FAQ -->
       <button id="faq-top" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" onclick="window.location.href='index.html#faq'">❓ FAQ</button>
     </div>
   </header>
@@ -67,79 +77,104 @@
   <main class="max-w-7xl mx-auto px-4 py-14">
     <h1 class="font-display text-2xl md:text-4xl font-extrabold">Science</h1>
     <p class="mt-3 text-sm md:text-base text-slate-300">
-      We've done the research so you don't have to. Our formulas are obsessively researched and third-party tested - giving you total peace of mind in every scoop
+      We've done the research so you don't have to. Our formulas are obsessively researched and third-party tested — giving you total peace of mind in every scoop.
     </p>
 
-    <!-- Ingredient gallery list -->
+    <!-- Ingredient gallery list (PDF-ready tiles) -->
     <section class="mt-12 space-y-12">
+      <!-- Caffeine -->
       <article>
         <h3 class="font-display text-lg md:text-xl">Caffeine Anhydrous</h3>
         <p class="text-sm text-slate-300">energy, focus, and alertness</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/caffeine-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/caffeine-1.pdf" title="Open PDF">
+            <div>
+              <svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg>
+              <div class="pdf-label text-slate-500">caffeine 1</div>
+            </div>
+          </a>
+          <a href="pdfs/caffeine-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/caffeine-2.pdf" title="Open PDF">
+            <div>
+              <svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg>
+              <div class="pdf-label text-slate-500">caffeine 2</div>
+            </div>
+          </a>
+          <a href="pdfs/caffeine-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/caffeine-3.pdf" title="Open PDF">
+            <div>
+              <svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg>
+              <div class="pdf-label text-slate-500">caffeine 3</div>
+            </div>
+          </a>
+          <a href="pdfs/caffeine-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/caffeine-4.pdf" title="Open PDF">
+            <div>
+              <svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg>
+              <div class="pdf-label text-slate-500">caffeine 4</div>
+            </div>
+          </a>
         </div>
       </article>
 
+      <!-- L-Citrulline -->
       <article>
         <h3 class="font-display text-lg md:text-xl">L-Citrulline</h3>
         <p class="text-sm text-slate-300">better pump and endurance</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/citrulline-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/citrulline-1.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">citrulline 1</div></div></a>
+          <a href="pdfs/citrulline-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/citrulline-2.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">citrulline 2</div></div></a>
+          <a href="pdfs/citrulline-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/citrulline-3.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">citrulline 3</div></div></a>
+          <a href="pdfs/citrulline-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/citrulline-4.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">citrulline 4</div></div></a>
         </div>
       </article>
 
+      <!-- L-Tyrosine -->
       <article>
         <h3 class="font-display text-lg md:text-xl">L-Tyrosine</h3>
         <p class="text-sm text-slate-300">enhances mental focus</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/tyrosine-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/tyrosine-1.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">tyrosine 1</div></div></a>
+          <a href="pdfs/tyrosine-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/tyrosine-2.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">tyrosine 2</div></div></a>
+          <a href="pdfs/tyrosine-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/tyrosine-3.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">tyrosine 3</div></div></a>
+          <a href="pdfs/tyrosine-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/tyrosine-4.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">tyrosine 4</div></div></a>
         </div>
       </article>
 
+      <!-- Beta-Alanine -->
       <article>
         <h3 class="font-display text-lg md:text-xl">Beta-Alanine</h3>
         <p class="text-sm text-slate-300">delays muscle fatigue</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/beta-alanine-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/beta-alanine-1.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">beta-alanine 1</div></div></a>
+          <a href="pdfs/beta-alanine-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/beta-alanine-2.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">beta-alanine 2</div></div></a>
+          <a href="pdfs/beta-alanine-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/beta-alanine-3.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">beta-alanine 3</div></div></a>
+          <a href="pdfs/beta-alanine-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/beta-alanine-4.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">beta-alanine 4</div></div></a>
         </div>
       </article>
 
+      <!-- Taurine -->
       <article>
         <h3 class="font-display text-lg md:text-xl">Taurine</h3>
         <p class="text-sm text-slate-300">supports hydration and muscle function</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text:[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text:[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text:[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text:[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/taurine-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/taurine-1.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4H12v6h6v10z"/></svg><div class="pdf-label text-slate-500">taurine 1</div></div></a>
+          <a href="pdfs/taurine-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/taurine-2.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4H12v6h6v10z"/></svg><div class="pdf-label text-slate-500">taurine 2</div></div></a>
+          <a href="pdfs/taurine-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/taurine-3.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4H12v6h6v10z"/></svg><div class="pdf-label text-slate-500">taurine 3</div></div></a>
+          <a href="pdfs/taurine-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/taurine-4.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4H12v6h6v10z"/></svg><div class="pdf-label text-slate-500">taurine 4</div></div></a>
         </div>
       </article>
 
+      <!-- Vitamins B6 & B12 -->
       <article>
         <h3 class="font-display text-lg md:text-xl">Vitamin B6 &amp; Vitamin B12</h3>
         <p class="text-sm text-slate-300">better energy metabolism</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
-          <div class="pixel-card aspect-square bg-white dark:bg-arcade-panel grid place-items-center dark:shadow-arcade"><span class="text-[10px] md:text-xs text-slate-500">[ IMG ]</span></div>
+          <a href="pdfs/vitamin-b6-b12-1.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/vitamin-b6-b12-1.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">vitamin b6 & b12 1</div></div></a>
+          <a href="pdfs/vitamin-b6-b12-2.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/vitamin-b6-b12-2.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">vitamin b6 & b12 2</div></div></a>
+          <a href="pdfs/vitamin-b6-b12-3.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/vitamin-b6-b12-3.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">vitamin b6 & b12 3</div></div></a>
+          <a href="pdfs/vitamin-b6-b12-4.pdf" class="pixel-card pdf-thumb bg-white dark:bg-arcade-panel dark:shadow-arcade" data-pdf="pdfs/vitamin-b6-b12-4.pdf" title="Open PDF"><div><svg class="pdf-icon mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8zm0 2.414L17.586 8H14zM6 20V4h6v6h6v10z"/></svg><div class="pdf-label text-slate-500">vitamin b6 & b12 4</div></div></a>
         </div>
       </article>
     </section>
 
-    <!-- How we vet studies (moved to end with new copy) -->
     <section class="mt-16">
       <h2 class="font-display text-xl md:text-2xl font-bold">How we vet studies</h2>
       <p class="mt-3 text-sm">
@@ -147,6 +182,22 @@
       </p>
     </section>
   </main>
+
+  <!-- PDF Modal -->
+  <div id="pdf-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true">
+    <button class="backdrop absolute inset-0 w-full h-full" aria-label="Close PDF"></button>
+    <div class="sheet absolute inset-3 md:inset-12 bg-white dark:bg-arcade-panel border-[3px] border-slate-900 dark:border-arcade-line">
+      <div class="flex items-center justify-between px-3 py-2 border-b border-slate-200 dark:border-arcade-line">
+        <strong class="text-xs md:text-sm">Study PDF</strong>
+        <div class="flex items-center gap-2">
+          <a id="pdf-open" href="#" target="_blank" rel="noopener" class="text-xs underline">Open in new tab</a>
+          <a id="pdf-download" href="#" download class="text-xs underline">Download</a>
+          <button id="pdf-close" class="px-2 py-1 pixel-btn bg-white dark:bg-slate-900 text-xs" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <iframe id="pdf-frame" src="" class="block w-full" title="PDF viewer"></iframe>
+    </div>
+  </div>
 
   <footer class="py-12 border-t border-slate-200 dark:border-arcade-line">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-xs md:text-sm">
@@ -214,6 +265,42 @@
           btn?.setAttribute('aria-expanded','false');
         }
       });
+    })();
+
+    // PDF lightbox logic
+    (function(){
+      const modal = document.getElementById('pdf-modal');
+      const frame = document.getElementById('pdf-frame');
+      const openNew = document.getElementById('pdf-open');
+      const download = document.getElementById('pdf-download');
+      const closeBtn = document.getElementById('pdf-close');
+
+      function openPDF(url){
+        if(!url){ alert('PDF coming soon.'); return; }
+        frame.src = url;
+        openNew.href = url;
+        download.href = url;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      }
+      function closePDF(){
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden','true');
+        frame.src = '';
+        document.body.style.overflow='';
+      }
+
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('.pdf-thumb');
+        if(!a) return;
+        e.preventDefault();
+        openPDF(a.dataset.pdf || a.getAttribute('href'));
+      });
+
+      closeBtn.addEventListener('click', closePDF);
+      modal.querySelector('.backdrop').addEventListener('click', closePDF);
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !modal.classList.contains('hidden')) closePDF(); });
     })();
   </script>
 </body>

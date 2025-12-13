@@ -42,6 +42,9 @@
     .modal-backdrop[aria-hidden="false"]{ display:flex; }
     .modal-panel{ width:min(92vw,1100px); height:min(90vh,900px); background:#0f172a; border:3px solid #0aa35a; box-shadow:0 0 0 3px #fff, 6px 6px 0 0 #0c683d; position:relative; }
     .modal-close{ position:absolute; top:.5rem; right:.5rem; border:3px solid #0aa35a; background:#fff; padding:.25rem .5rem; cursor:pointer; }
+
+    /* Tabs */
+    .tab-active{ background:#12c26b !important; border-color:#0aa35a !important; color:#0b1020 !important; }
   </style>
 </head>
 <body class="bg-white dark:bg-arcade-bg text-slate-900 dark:text-slate-100 font-body pixel-bg">
@@ -78,9 +81,24 @@
       We've done the research so you don't have to. Our formulas are obsessively researched and third-party tested — giving you total peace of mind in every scoop.
     </p>
 
-    <!-- Ingredient gallery list (each tile shows an inline PDF preview; click to enlarge in modal) -->
-    <section class="mt-12 space-y-12">
+    <!-- Series selector (tabs) -->
+    <nav class="mt-8 flex flex-wrap gap-3" role="tablist" aria-label="Select product series">
+      <button class="pixel-btn px-4 py-2 bg-white dark:bg-arcade-panel border border-slate-900 dark:border-arcade-line text-xs md:text-sm tab-active"
+              role="tab" aria-selected="true" aria-controls="tab-pre" id="tab-pre-btn" data-tab-target="tab-pre">
+        PRE-WORKOUT
+      </button>
+      <button class="pixel-btn px-4 py-2 bg-white dark:bg-arcade-panel border border-slate-900 dark:border-arcade-line text-xs md:text-sm"
+              role="tab" aria-selected="false" aria-controls="tab-gaming" id="tab-gaming-btn" data-tab-target="tab-gaming">
+        GAMING
+      </button>
+      <button class="pixel-btn px-4 py-2 bg-white dark:bg-arcade-panel border border-slate-900 dark:border-arcade-line text-xs md:text-sm"
+              role="tab" aria-selected="false" aria-controls="tab-protein" id="tab-protein-btn" data-tab-target="tab-protein">
+        PROTEIN POWDER
+      </button>
+    </nav>
 
+    <!-- PRE-WORKOUT tabpanel (existing content) -->
+    <section id="tab-pre" role="tabpanel" aria-labelledby="tab-pre-btn" class="mt-12 space-y-12">
       <!-- Caffeine -->
       <article>
         <h3 class="font-display text-lg md:text-xl">Caffeine Anhydrous</h3>
@@ -202,6 +220,48 @@
       </article>
     </section>
 
+    <!-- GAMING tabpanel (placeholder scaffolding) -->
+    <section id="tab-gaming" role="tabpanel" aria-labelledby="tab-gaming-btn" class="mt-12 space-y-6 hidden">
+      <p class="text-sm md:text-base text-slate-300">
+        Gaming stack studies will live here (e.g., L-Theanine, L-Tyrosine, Alpha-GPC, Lutein). Add PDFs to your repo root and link them just like Pre-Workout.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD theanine-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD tyrosine-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD alpha-gpc-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD lutein-1.pdf ]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROTEIN tabpanel (placeholder scaffolding) -->
+    <section id="tab-protein" role="tabpanel" aria-labelledby="tab-protein-btn" class="mt-12 space-y-6 hidden">
+      <p class="text-sm md:text-base text-slate-300">
+        Protein series studies will live here (e.g., whey isolate, casein, EAA/Leucine). Add PDFs and wire them up when ready.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD whey-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD casein-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD eaa-1.pdf ]</span>
+        </div>
+        <div class="pixel-card bg-white dark:bg-arcade-panel dark:shadow-arcade grid place-items-center aspect-letter">
+          <span class="text-[10px] md:text-xs text-slate-500">[ ADD leucine-1.pdf ]</span>
+        </div>
+      </div>
+    </section>
+
     <!-- How we vet studies -->
     <section class="mt-16">
       <h2 class="font-display text-xl md:text-2xl font-bold">How we vet studies</h2>
@@ -314,6 +374,27 @@
       closeBtn.addEventListener('click', closePDF);
       modal.addEventListener('click', (e)=>{ if(e.target === modal) closePDF(); });
       document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePDF(); });
+    })();
+
+    // Tabs (series selector) with basic persistence
+    (function(){
+      const buttons=[...document.querySelectorAll('[role="tab"][data-tab-target]')];
+      const panels=buttons.map(b=>document.getElementById(b.dataset.tabTarget));
+      const key='scienceTab';
+      function activate(id){
+        buttons.forEach(btn=>{
+          const on = btn.dataset.tabTarget===id;
+          btn.classList.toggle('tab-active', on);
+          btn.setAttribute('aria-selected', on.toString());
+        });
+        panels.forEach(p=>{
+          p.classList.toggle('hidden', p.id!==id);
+        });
+        try{ localStorage.setItem(key, id); }catch(e){}
+      }
+      const saved = localStorage.getItem('scienceTab');
+      if(saved && document.getElementById(saved)) activate(saved);
+      buttons.forEach(btn=>btn.addEventListener('click', ()=>activate(btn.dataset.tabTarget)));
     })();
   </script>
 </body>

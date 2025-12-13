@@ -65,11 +65,22 @@
     <!-- Founder module -->
     <section class="mt-8 pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
       <h2 class="font-display text-xl md:text-2xl font-bold">Founder</h2>
-      <div class="mt-6 flex flex-col items-center text-center">
-        <div class="w-40 h-40 rounded-full border-[3px] border-slate-900 dark:border-arcade-line bg-slate-50 dark:bg-slate-900 grid place-items-center overflow-hidden">
-          <img src="founder_image.png" alt="Dangchi Li" class="w-full h-full object-cover">
+      <!-- Changed to a responsive two-up grid; stacks on small, side-by-side on md+ -->
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center text-center">
+        <!-- Dangchi Li -->
+        <div class="flex flex-col items-center">
+          <div class="w-40 h-40 rounded-full border-[3px] border-slate-900 dark:border-arcade-line bg-slate-50 dark:bg-slate-900 grid place-items-center overflow-hidden">
+            <img src="founder_image.png" alt="Dangchi Li" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <p class="mt-4 font-semibold text-sm md:text-base">Dangchi Li</p>
         </div>
-        <p class="mt-4 font-semibold text-sm md:text-base">Dangchi Li</p>
+        <!-- Duo Duo (uses labr.png) -->
+        <div class="flex flex-col items-center">
+          <div class="w-40 h-40 rounded-full border-[3px] border-slate-900 dark:border-arcade-line bg-slate-50 dark:bg-slate-900 grid place-items-center overflow-hidden">
+            <img src="labr.png" alt="Duo Duo" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <p class="mt-4 font-semibold text-sm md:text-base">Duo Duo</p>
+        </div>
       </div>
     </section>
 
@@ -110,10 +121,54 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    (function(){const k='theme',r=document.documentElement;function s(v){v==='dark'?r.classList.add('dark'):r.classList.remove('dark');localStorage.setItem(k,v);const b=document.getElementById('theme-toggle');if(b){b.setAttribute('aria-pressed',v==='dark');b.textContent=v==='dark'?'🕹️ Arcade':'🌞 Light';}}const saved=localStorage.getItem(k);if(saved){s(saved)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){s('dark')}else{s('light')}document.getElementById('theme-toggle')?.addEventListener('click',()=>s(r.classList.contains('dark')?'light':'dark'));})();
-    (function(){const k='lang',r=document.documentElement,b=document.getElementById('lang-toggle'),m=document.getElementById('lang-menu');function setL(v){const map={en:'en',zh:'zh-CN'};r.setAttribute('lang',map[v]||'en');localStorage.setItem(k,v);if(b){b.setAttribute('aria-label',v==='zh'?'语言':'Language');b.textContent=v==='zh'?'🌐 语言':'🌐 Language';}}const saved=localStorage.getItem(k)||'en';setL(saved);b?.addEventListener('click',()=>{const o=m?.classList.contains('hidden')===false;m?.classList.toggle('hidden');b.setAttribute('aria-expanded',(!o).toString());});m?.addEventListener('click',e=>{const t=e.target.closest('[data-lang]');if(!t)return;setL(t.getAttribute('data-lang'));m.classList.add('hidden');b.setAttribute('aria-expanded','false');});document.addEventListener('click',e=>{if(!document.getElementById('lang-wrap')?.contains(e.target)){m?.classList.add('hidden');b?.setAttribute('aria-expanded','false');}});})();
+
+    // Theme toggle (persisted)
+    (function(){
+      const k='theme', r=document.documentElement, b=document.getElementById('theme-toggle');
+      function set(v){
+        v==='dark'?r.classList.add('dark'):r.classList.remove('dark');
+        localStorage.setItem(k,v);
+        if(b){ b.setAttribute('aria-pressed', v==='dark'); b.textContent = v==='dark'?'🕹️ Arcade':'🌞 Light'; }
+      }
+      const saved=localStorage.getItem(k);
+      if(saved){ set(saved); }
+      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ set('dark'); }
+      else { set('light'); }
+      b?.addEventListener('click', ()=> set(r.classList.contains('dark') ? 'light' : 'dark'));
+    })();
+
+    // Language menu (persisted)
+    (function(){
+      const k='lang', root=document.documentElement, btn=document.getElementById('lang-toggle'), menu=document.getElementById('lang-menu');
+      function setLang(v){
+        const map={en:'en', zh:'zh-CN'};
+        root.setAttribute('lang', map[v]||'en');
+        localStorage.setItem(k, v);
+        if(btn){
+          btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language');
+          btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language';
+        }
+      }
+      const saved=localStorage.getItem(k) || 'en';
+      setLang(saved);
+      btn?.addEventListener('click', ()=>{
+        const open = menu?.classList.contains('hidden')===false;
+        menu?.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', (!open).toString());
+      });
+      menu?.addEventListener('click', (e)=>{
+        const t=e.target.closest('[data-lang]'); if(!t) return;
+        setLang(t.getAttribute('data-lang'));
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded','false');
+      });
+      document.addEventListener('click', (e)=>{
+        if(!document.getElementById('lang-wrap')?.contains(e.target)){
+          menu?.classList.add('hidden');
+          btn?.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
-
-

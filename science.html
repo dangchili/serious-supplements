@@ -30,6 +30,7 @@
     .pixel-bg{background-image:linear-gradient(0deg,rgba(18,194,107,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,194,107,.08) 1px,transparent 1px);background-size:16px 16px}
     .pixel-card{border-width:3px;border-color:#0aa35a;box-shadow:0 0 0 3px #fff,4px 4px 0 0 #0c683d;border-radius:0}
     .pixel-btn{border-width:3px;border-color:#0aa35a;border-radius:0;box-shadow:4px 4px 0 0 #0c683d;transition:transform .05s linear,box-shadow .05s linear}
+    .pixel-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 0 #0c683d}
     .pixel-logo{width:2rem;height:2rem;background:#12c26b;box-shadow:4px 4px 0 0 #0c683d}
     .dark .bg-white{background-color:#0b1020 !important}
     .dark .text-slate-900{color:#e5e7eb !important}
@@ -43,8 +44,20 @@
     .modal-panel{ width:min(92vw,1100px); height:min(90vh,900px); background:#0f172a; border:3px solid #0aa35a; box-shadow:0 0 0 3px #fff, 6px 6px 0 0 #0c683d; position:relative; }
     .modal-close{ position:absolute; top:.5rem; right:.5rem; border:3px solid #0aa35a; background:#fff; padding:.25rem .5rem; cursor:pointer; }
 
-    /* Tabs */
-    .tab-active{ background:#12c26b !important; border-color:#0aa35a !important; color:#0b1020 !important; }
+    /* Tabs — ensure active text stays visible in both themes */
+    .tab-active{
+      background:#12c26b !important;
+      border-color:#0aa35a !important;
+      color:#0b1020 !important;          /* high-contrast label */
+    }
+    .dark .tab-active{ color:#0b1020 !important; }
+    .tab-active:hover,
+    .tab-active:focus,
+    .tab-active:active{ color:#0b1020 !important; }
+    .tab-active *{
+      color:#0b1020 !important;          /* guard against nested nodes inheriting other colors */
+      fill:#0b1020 !important;
+    }
   </style>
 </head>
 <body class="bg-white dark:bg-arcade-bg text-slate-900 dark:text-slate-100 font-body pixel-bg">
@@ -97,7 +110,7 @@
       </button>
     </nav>
 
-    <!-- PRE-WORKOUT tabpanel (unchanged) -->
+    <!-- PRE-WORKOUT tabpanel -->
     <section id="tab-pre" role="tabpanel" aria-labelledby="tab-pre-btn" class="mt-12 space-y-12">
       <!-- Caffeine -->
       <article>
@@ -220,7 +233,7 @@
       </article>
     </section>
 
-    <!-- GAMING tabpanel (formatted like PRE-WORKOUT) -->
+    <!-- GAMING tabpanel -->
     <section id="tab-gaming" role="tabpanel" aria-labelledby="tab-gaming-btn" class="mt-12 space-y-12 hidden">
       <!-- Caffeine (continue numbering) -->
       <article>

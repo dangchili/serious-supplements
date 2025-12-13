@@ -80,14 +80,17 @@
     <!-- LEFT SIDEBAR -->
     <aside class="md:col-span-3">
       <div class="sticky top-6">
-        <div class="text-xs font-black tracking-tight uppercase mb-4 flex items-center gap-2">
+        <!-- Add pl-1 so text aligns with link text (which sits after a 4px left border) -->
+        <div class="text-xs font-black tracking-tight uppercase mb-4 flex items-center gap-2 pl-1">
           <span>Filters</span><span class="text-slate-400">+</span>
         </div>
         <nav aria-label="Category filters" class="sidebar space-y-2" id="sidebar">
           <a href="#all" class="active">All</a>
           <a href="#preworkout">Pre-Workout</a>
-          <a href="#hydration">Hydration</a>
+          <a href="#gaming">Gaming</a>
           <a href="#protein">Protein</a>
+          <a href="#hydration">Hydration</a>
+          <a href="#probiotics">Probiotics</a>
           <a href="#basics">Basics</a>
           <a href="#bundles">Bundles</a>
           <a href="#samples">Samples</a>
@@ -145,6 +148,9 @@
           </div>
         </section>
 
+        <!-- Anchor for GAMING filter -->
+        <span id="gaming" class="block -mt-2 pt-2"></span>
+
         <!-- GAMING + MORE COMING SOON -->
         <section class="pt-2" id="bundles">
           <h2 class="font-display text-xl md:text-2xl">Gaming & More</h2>
@@ -173,6 +179,14 @@
             </div>
           </div>
         </section>
+
+        <!-- Placeholder anchors for filters without sections yet -->
+        <span id="protein"></span>
+        <span id="hydration"></span>
+        <span id="probiotics"></span>
+        <span id="basics"></span>
+        <span id="samples"></span>
+        <span id="apparel"></span>
       </div>
     </section>
   </main>

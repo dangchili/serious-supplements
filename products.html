@@ -83,7 +83,7 @@
         <div class="text-xs font-black tracking-tight uppercase mb-4 flex items-center gap-2">
           <span>Filters</span><span class="text-slate-400">+</span>
         </div>
-        <nav aria-label="Category filters" class="sidebar space-y-2">
+        <nav aria-label="Category filters" class="sidebar space-y-2" id="sidebar">
           <a href="#all" class="active">All</a>
           <a href="#preworkout">Pre-Workout</a>
           <a href="#hydration">Hydration</a>
@@ -206,21 +206,77 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Theme boot + toggle
     (function(){
       const k='theme', r=document.documentElement, b=document.getElementById('theme-toggle');
-      function set(v){ v==='dark'?r.classList.add('dark'):r.classList.remove('dark');
-        localStorage.setItem(k,v); if(b){ b.setAttribute('aria-pressed', v==='dark'); b.textContent=v==='dark'?'🕹️ Arcade':'🌞 Light';}}
+      function set(v){
+        v==='dark'?r.classList.add('dark'):r.classList.remove('dark');
+        localStorage.setItem(k,v);
+        if(b){ b.setAttribute('aria-pressed', v==='dark'); b.textContent=v==='dark'?'🕹️ Arcade':'🌞 Light'; }
+      }
       const saved=localStorage.getItem(k);
-      if(saved){ set(saved);} else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ set('dark'); } else { set('light'); }
+      if(saved){ set(saved); }
+      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ set('dark'); }
+      else { set('light'); }
       b?.addEventListener('click', ()=> set(r.classList.contains('dark') ? 'light' : 'dark'));
     })();
 
+    // Language boot + menu
     (function(){
       const k='lang', root=document.documentElement, btn=document.getElementById('lang-toggle'), menu=document.getElementById('lang-menu');
-      function setLang(v){ const map={en:'en', zh:'zh-CN'}; root.setAttribute('lang', map[v]||'en'); localStorage.setItem(k, v);
-        if(btn){ btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language'); btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language';}}
-      const saved=localStorage.getItem(k) || 'en'; setLang(saved);
-      btn?.addEventListener('click', ()=>{ const open=menu?.classList.contains('hidden')===false; menu?.classList.toggle('hidden'); btn.setAttribute('aria-expanded', (!open).toString());});
-      menu?.addEventListener('click', (e)=>{ const t=e.target.closest('[data-lang
+      function setLang(v){
+        const map = { en:'en', zh:'zh-CN' };
+        root.setAttribute('lang', map[v] || 'en');
+        localStorage.setItem(k, v);
+        if(btn){
+          btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language');
+          btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language';
+        }
+      }
+      const saved=localStorage.getItem(k) || 'en';
+      setLang(saved);
+
+      btn?.addEventListener('click', ()=>{
+        const open = menu?.classList.contains('hidden')===false;
+        menu?.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', (!open).toString());
+      });
+
+      menu?.addEventListener('click', (e)=>{
+        const t = e.target.closest('[data-lang]');
+        if(!t) return;
+        setLang(t.getAttribute('data-lang'));
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded','false');
+      });
+
+      document.addEventListener('click', (e)=>{
+        if(!document.getElementById('lang-wrap')?.contains(e.target)){
+          menu?.classList.add('hidden');
+          btn?.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+
+    // Sidebar active state (on click + on hash change)
+    (function(){
+      const nav = document.getElementById('sidebar');
+      function setActive(hash){
+        const links = nav.querySelectorAll('a');
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+      }
+      nav.addEventListener('click', (e)=>{
+        const a = e.target.closest('a');
+        if(!a) return;
+        setActive(a.getAttribute('href'));
+      });
+      window.addEventListener('hashchange', ()=> setActive(location.hash || '#all'));
+      // boot
+      setActive(location.hash || '#all');
+    })();
+  </script>
+</body>
+</html>

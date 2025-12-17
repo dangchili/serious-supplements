@@ -27,6 +27,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    /* ===== Pixel Chinese font (drop your dotted pixel Chinese font at /fonts/zpix.woff2) ===== */
+    @font-face{
+      font-family: 'PixelZh';
+      src: url('/fonts/zpix.woff2') format('woff2'),
+           url('/fonts/zpix.woff') format('woff');
+      font-display: swap;
+    }
+
     html:focus-within { scroll-behavior: smooth; }
     :focus-visible { outline: 3px solid #12c26b; outline-offset: 3px; }
     .pixel-bg { background-image: linear-gradient(0deg, rgba(18,194,107,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(18,194,107,0.08) 1px, transparent 1px); background-size: 16px 16px; }
@@ -42,6 +50,17 @@
     .dark .text-slate-700{color:#cbd5e1 !important;}
     .dark .border-slate-200{border-color:#334155 !important;}
     .dark .shadow-arcade{box-shadow:0 0 12px rgba(18,194,107,.35);} 
+
+    /* When Chinese is active, force pixel Chinese font (with safe fallbacks) */
+    html[lang="zh-CN"] body,
+    html[lang="zh-CN"] .font-display,
+    html[lang="zh-CN"] .font-body,
+    html[lang="zh-CN"] button,
+    html[lang="zh-CN"] a,
+    html[lang="zh-CN"] h1, html[lang="zh-CN"] h2, html[lang="zh-CN"] h3, html[lang="zh-CN"] h4, html[lang="zh-CN"] h5, html[lang="zh-CN"] h6 {
+      font-family: 'PixelZh', 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif !important;
+      letter-spacing: 0.02em;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -62,24 +81,24 @@
   <header class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative z-40">
     <a href="index.html#top" class="flex items-center gap-3" aria-label="SERIOUS SUPPLEMENTS Home">
       <div class="pixel-logo"></div>
-      <span class="font-display text-sm md:text-base font-bold">SERIOUS SUPPLEMENTS</span>
+      <span class="font-display text-sm md:text-base font-bold" data-i18n="brand">SERIOUS SUPPLEMENTS</span>
     </a>
     <nav aria-label="Primary" class="hidden md:flex gap-6 text-xs">
-      <a href="products.html" class="hover:text-brand-700">Products</a>
-      <a href="science.html" class="hover:text-brand-700">Science</a>
-      <a href="index.html#waitlist" class="hover:text-brand-700">Waitlist</a>
-      <a href="about.html" class="hover:text-brand-700">About</a>
+      <a href="products.html" class="hover:text-brand-700" data-i18n="nav.products">Products</a>
+      <a href="science.html" class="hover:text-brand-700" data-i18n="nav.science">Science</a>
+      <a href="index.html#waitlist" class="hover:text-brand-700" data-i18n="nav.waitlist">Waitlist</a>
+      <a href="about.html" class="hover:text-brand-700" data-i18n="nav.about">About</a>
     </nav>
     <div class="flex items-center gap-3">
       <button type="button" id="theme-toggle" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-pressed="false" aria-label="Toggle theme">🕹️ Arcade</button>
       <div class="relative z-50" id="lang-wrap">
         <button type="button" id="lang-toggle" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-expanded="false" aria-haspopup="true" aria-label="Language">🌐 Language</button>
-        <div id="lang-menu" class="absolute right-0 mt-2 w-40 bg-white dark:bg-arcade-panel border-[3px] border-slate-900 dark:border-arcade-line shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] hidden z-50" role="menu" aria-label="Select language">
+        <div id="lang-menu" class="absolute right-0 mt-2 w-44 bg-white dark:bg-arcade-panel border-[3px] border-slate-900 dark:border-arcade-line shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] hidden z-50" role="menu" aria-label="Select language">
           <button type="button" data-lang="en" class="block w-full text-left px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">English</button>
           <button type="button" data-lang="zh" class="block w-full text-left px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">中文</button>
         </div>
       </div>
-      <button type="button" id="faq-top" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-label="FAQ"
+      <button type="button" id="faq-top" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-label="FAQ" data-i18n="nav.faq"
         onclick="window.location.href='index.html#faq'">❓ FAQ</button>
     </div>
   </header>
@@ -89,15 +108,17 @@
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 px-4 py-7 items-center">
       <div>
         <h1 class="font-display text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
-          <span class="block text-brand-600">Max Focus</span>
-          <span class="block">Zero Crash.</span>
+          <span class="block text-brand-600" data-i18n="hero.max_focus">Max Focus</span>
+          <span class="block" data-i18n="hero.zero_crash">Zero Crash.</span>
         </h1>
-        <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300">SERIOUS PRE-WORKOUT by SERIOUS SUPPLEMENTS — a transparent-label formula for energy, focus, and endurance with a tongue-in-cheek pixel vibe.*</p>
+        <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300" data-i18n="hero.desc">
+          SERIOUS PRE-WORKOUT by SERIOUS SUPPLEMENTS — a transparent-label formula for energy, focus, and endurance with a tongue-in-cheek pixel vibe.*
+        </p>
         <div class="mt-6 flex flex-wrap items-center gap-3">
-          <button type="button" onclick="document.getElementById('waitlist')?.scrollIntoView({behavior:'smooth'})" class="px-5 py-3 pixel-btn border border-slate-900 bg-white dark:bg-slate-900 font-semibold hover:bg-slate-50 min-w-[44px] min-h-[44px]">Join the Waitlist</button>
-          <a href="products.html" class="px-5 py-3 pixel-btn border border-slate-900 bg-white dark:bg-slate-900 font-semibold hover:bg-slate-50 min-w-[44px] min-h-[44px]">See Products</a>
+          <button type="button" onclick="document.getElementById('waitlist')?.scrollIntoView({behavior:'smooth'})" class="px-5 py-3 pixel-btn border border-slate-900 bg-white dark:bg-slate-900 font-semibold hover:bg-slate-50 min-w-[44px] min-h-[44px]" data-i18n="cta.join">Join the Waitlist</button>
+          <a href="products.html" class="px-5 py-3 pixel-btn border border-slate-900 bg-white dark:bg-slate-900 font-semibold hover:bg-slate-50 min-w-[44px] min-h-[44px]" data-i18n="cta.products">See Products</a>
         </div>
-        <p class="mt-3 text-[10px] md:text-xs text-slate-500">*Statements have not been evaluated by the FDA. Product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+        <p class="mt-3 text-[10px] md:text-xs text-slate-500" data-i18n="hero.footnote">*Statements have not been evaluated by the FDA. Product is not intended to diagnose, treat, cure, or prevent any disease.</p>
       </div>
       <div class="relative grid place-items-center">
         <img id="hero-img" src="hero_image.png" alt="Serious Supplements Pre-Workout image with pixel-art people" class="w-full h-full object-contain pixel-img" />
@@ -109,47 +130,47 @@
   <!-- Benefits -->
   <section id="benefits" class="pt-4 pb-2">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-display text-2xl md:text-3xl font-bold">Explore our lineup</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.lineup">Explore our lineup</h2>
 
       <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
         <a href="products.html" class="group block" aria-label="View Pre-Workout products">
           <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
             <img src="orange.png" alt="Pre-Workout" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
           </div>
-          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Pre-Workout</p>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600" data-i18n="card.pre">Pre-Workout</p>
         </a>
         <a href="products.html" class="group block" aria-label="View Gaming products">
           <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
             <img src="Game.png" alt="Gaming" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
           </div>
-          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Gaming</p>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600" data-i18n="card.gaming">Gaming</p>
         </a>
         <a href="products.html" class="group block" aria-label="View Bundles">
           <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
             <img src="bundles.png" alt="Bundles" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
           </div>
-          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">Bundles</p>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600" data-i18n="card.bundles">Bundles</p>
         </a>
         <a href="products.html" class="group block" aria-label="View Apparel">
           <div class="pixel-card aspect-square bg-white grid place-items-center overflow-hidden">
             <img src="apparel.png" alt="Apparel" class="w-full h-full object-cover pixel-img group-hover:scale-105 transition-transform">
           </div>
-          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600">APPAREL</p>
+          <p class="mt-2 text-center text-xs md:text-sm font-semibold group-hover:text-brand-600" data-i18n="card.apparel">APPAREL</p>
         </a>
       </div>
 
       <div class="mt-16 grid md:grid-cols-3 gap-6">
         <article class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <h3 class="font-semibold text-base">Sustained Energy</h3>
-          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm">98mg caffeine (anhydrous) per serving.</p>
+          <h3 class="font-semibold text-base" data-i18n="benefit.energy.h">Sustained Energy</h3>
+          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm" data-i18n="benefit.energy.p">98mg caffeine (anhydrous) per serving.</p>
         </article>
         <article class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <h3 class="font-semibold text-base">Pump & Performance</h3>
-          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm">Up to 6000mg L-Citrulline plus taurine and L-Tyrosine.*</p>
+          <h3 class="font-semibold text-base" data-i18n="benefit.pump.h">Pump & Performance</h3>
+          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm" data-i18n="benefit.pump.p">Up to 6000mg L-Citrulline plus taurine and L-Tyrosine.*</p>
         </article>
         <article class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <h3 class="font-semibold text-base">B-Vitamin Support</h3>
-          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm">Vitamin B6 and B12 at 200% NRV.</p>
+          <h3 class="font-semibold text-base" data-i18n="benefit.bvit.h">B-Vitamin Support</h3>
+          <p class="mt-2 text-slate-700 dark:text-slate-300 text-sm" data-i18n="benefit.bvit.p">Vitamin B6 and B12 at 200% NRV.</p>
         </article>
       </div>
     </div>
@@ -164,8 +185,8 @@
             <img src="press.png" alt="Illustration for ingredient transparency" class="w-3/4 h-auto object-contain pixel-img">
           </div>
           <div class="md:col-span-3 h-full flex flex-col justify-center">
-            <h2 class="font-display text-2xl md:text-3xl font-bold">Transparent ingredients</h2>
-            <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300">
+            <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.transparent">Transparent ingredients</h2>
+            <p class="mt-4 text-sm md:text-base text-slate-700 dark:text-slate-300" data-i18n="p.transparent">
               We don't hide behind proprietary blends. We believe in 100% transparency, so you see every single ingredient and its exact dose. Just clean, effective formulas you can trust.
             </p>
           </div>
@@ -175,8 +196,8 @@
       <div class="mt-8 bg-white dark:bg-arcade-panel dark:shadow-arcade overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch p-6">
           <div class="md:col-span-3 h-full flex flex-col justify-center">
-            <h2 class="font-display text-2xl md:text-3xl font-bold">Scientific formulation</h2>
-            <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base">
+            <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.science">Scientific formulation</h2>
+            <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm md:text-base" data-i18n="p.science">
               Every ingredient is chosen based on proven, human studies — not marketing fads. We're 100% transparent about our science and will never make exaggerated health claims. We just make what works.
             </p>
           </div>
@@ -188,22 +209,22 @@
     </div>
   </section>
 
-  <!-- Reviews (now with grid-like background like the Waitlist section) -->
+  <!-- Reviews (with grid-like background) -->
   <section id="reviews" class="py-16 pixel-bg">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-display text-2xl md:text-3xl font-bold">What athletes say</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.reviews">What athletes say</h2>
       <div class="mt-8 grid md:grid-cols-3 gap-6" aria-live="polite">
         <figure class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <blockquote class="text-slate-800 dark:text-slate-200 text-sm">“Smooth energy and no jitters. New PRs already.”</blockquote>
-          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400">— Alex R., coach</figcaption>
+          <blockquote class="text-slate-800 dark:text-slate-200 text-sm" data-i18n="review.1">“Smooth energy and no jitters. New PRs already.”</blockquote>
+          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400" data-i18n="review.1.by">— Alex R., coach</figcaption>
         </figure>
         <figure class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <blockquote class="text-slate-800 dark:text-slate-200 text-sm">“Ingredients are fully disclosed. Tastes great.”</blockquote>
-          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400">— Priya T.</figcaption>
+          <blockquote class="text-slate-800 dark:text-slate-200 text-sm" data-i18n="review.2">“Ingredients are fully disclosed. Tastes great.”</blockquote>
+          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400" data-i18n="review.2.by">— Priya T.</figcaption>
         </figure>
         <figure class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-          <blockquote class="text-slate-800 dark:text-slate-200 text-sm">“My go-to before long runs.”</blockquote>
-          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400">— Chris L.</figcaption>
+          <blockquote class="text-slate-800 dark:text-slate-200 text-sm" data-i18n="review.3">“My go-to before long runs.”</blockquote>
+          <figcaption class="mt-3 text-xs text-slate-600 dark:text-slate-400" data-i18n="review.3.by">— Chris L.</figcaption>
         </figure>
       </div>
       <p class="sr-only">Endorsements reflect real experiences; results vary.</p>
@@ -214,22 +235,22 @@
   <section id="waitlist" class="py-16">
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-6">
       <div class="lg:col-span-2 p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-        <h2 class="font-display text-2xl md:text-3xl font-bold">Join the Waitlist</h2>
-        <div class="mt-6 text-sm">Drop your email to be first in line. We’ll send a single launch alert. No spam. Promise.</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.waitlist">Join the Waitlist</h2>
+        <div class="mt-6 text-sm" data-i18n="p.waitlist">Drop your email to be first in line. We’ll send a single launch alert. No spam. Promise.</div>
         <form class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4" action="#" method="post" aria-labelledby="waitlist-label">
-          <h3 id="waitlist-label" class="sr-only">Join the waitlist</h3>
-          <label for="wl-email" class="sr-only">Email</label>
+          <h3 id="waitlist-label" class="sr-only" data-i18n="h.waitlist">Join the Waitlist</h3>
+          <label for="wl-email" class="sr-only" data-i18n="form.email">Email</label>
           <input id="wl-email" name="email" type="email" autocomplete="email" placeholder="you@domain.com" required class="w-full sm:w-auto flex-1 border-[3px] border-slate-900 dark:border-arcade-line p-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100" />
-          <button type="submit" class="px-6 py-3 pixel-btn bg-brand-600 text-white font-semibold hover:bg-brand-700 min-w-[44px] min-h-[44px]">Submit</button>
+          <button type="submit" class="px-6 py-3 pixel-btn bg-brand-600 text-white font-semibold hover:bg-brand-700 min-w-[44px] min-h-[44px]" data-i18n="form.submit">Submit</button>
         </form>
       </div>
       <aside class="p-6 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] dark:shadow-arcade">
-        <h3 class="font-semibold text-sm">What’s inside</h3>
+        <h3 class="font-semibold text-sm" data-i18n="aside.whatsinside">What’s inside</h3>
         <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm">
-          <li>30 servings per tub</li>
-          <li>Net wt. 360 g</li>
-          <li>Manufactured for SERIOUS SUPPLEMENTS, CHINA</li>
-          <li>Questions? <a class="underline" href="mailto:hi@serious-supp.com">hi@serious-supp.com</a></li>
+          <li data-i18n="aside.li1">30 servings per tub</li>
+          <li data-i18n="aside.li2">Net wt. 360 g</li>
+          <li data-i18n="aside.li3">Manufactured for SERIOUS SUPPLEMENTS, CHINA</li>
+          <li data-i18n="aside.li4">Questions? <a class="underline" href="mailto:hi@serious-supp.com">hi@serious-supp.com</a></li>
         </ul>
       </aside>
     </div>
@@ -238,20 +259,52 @@
   <!-- FAQ -->
   <section id="faq" class="py-16 bg-white dark:bg-arcade-panel">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-display text-2xl md:text-3xl font-bold">FAQ</h2>
-      <details class="mt-6 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade"><summary class="font-semibold text-sm">Is SERIOUS PRE-WORKOUT third-party tested?</summary><p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">Yes. Every lot is tested for identity, purity, strength, and composition prior to release.</p></details>
-      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade"><summary class="font-semibold text-sm">Can I stack it with other caffeine sources?</summary><p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">We do not recommend using other caffeine sources concurrently. Total caffeine from all sources should be monitored.</p></details>
-      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade"><summary class="font-semibold text-sm">Do you make disease treatment claims?</summary><p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">No. We avoid disease claims and advertise responsibly per FTC guidance. Statements on this site are not evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease.</p></details>
-      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade"><summary class="font-semibold text-sm">Should I expect any side effects from taking the pre-workout?</summary><p class="mt-3 text-slate-700 dark:text-slate-300 text-sm">Everything is well within safe limits and tested countless times. However, beta-alanine is famous for causing a harmless but sometimes uncomfortable tingling or itching sensation. It’s completely safe and nothing to worry about.</p></details>
+      <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.faq">FAQ</h2>
+      <details class="mt-6 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade">
+        <summary class="font-semibold text-sm" data-i18n="faq.q1">Is SERIOUS PRE-WORKOUT third-party tested?</summary>
+        <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm" data-i18n="faq.a1">Yes. Every lot is tested for identity, purity, strength, and composition prior to release.</p>
+      </details>
+      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade">
+        <summary class="font-semibold text-sm" data-i18n="faq.q2">Can I stack it with other caffeine sources?</summary>
+        <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm" data-i18n="faq.a2">We do not recommend using other caffeine sources concurrently. Total caffeine from all sources should be monitored.</p>
+      </details>
+      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade">
+        <summary class="font-semibold text-sm" data-i18n="faq.q3">Do you make disease treatment claims?</summary>
+        <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm" data-i18n="faq.a3">No. We avoid disease claims and advertise responsibly per FTC guidance. Statements on this site are not evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </details>
+      <details class="mt-3 p-4 border-[3px] border-slate-900 dark:border-arcade-line bg-white dark:bg-arcade-panel shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] dark:shadow-arcade">
+        <summary class="font-semibold text-sm" data-i18n="faq.q4">Should I expect any side effects from taking the pre-workout?</summary>
+        <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm" data-i18n="faq.a4">Everything is well within safe limits and tested countless times. However, beta-alanine is famous for causing a harmless but sometimes uncomfortable tingling or itching sensation. It’s completely safe and nothing to worry about.</p>
+      </details>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-12 border-t border-slate-200 dark:border-arcade-line">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-xs md:text-sm">
-      <div class="flex flex-col gap-2"><div class="flex items-center gap-3"><div class="pixel-logo"></div><span class="font-display text-sm md:text-base font-bold">SERIOUS SUPPLEMENTS</span></div><p class="text-slate-600 dark:text-slate-400">© <span id="year"></span> SERIOUS SUPPLEMENTS. All rights reserved.</p></div>
-      <div><h3 class="font-semibold">Company</h3><ul class="mt-2 space-y-2"><li><a href="about.html" class="hover:underline">About</a></li><li><a href="mailto:hi@serious-supp.com" class="hover:underline">Contact</a></li><li><a href="#" class="hover:underline">Careers</a></li></ul></div>
-      <div><h3 class="font-semibold">Legal</h3><ul class="mt-2 space-y-2"><li><a href="#" class="hover:underline">Terms</a></li><li><a href="#" class="hover:underline">Privacy</a></li><li><a href="#" class="hover:underline">Accessibility</a></li></ul></div>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3">
+          <div class="pixel-logo"></div>
+          <span class="font-display text-sm md:text-base font-bold" data-i18n="brand">SERIOUS SUPPLEMENTS</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400"><span data-i18n="footer.copyrightPrefix">©</span> <span id="year"></span> <span data-i18n="brand">SERIOUS SUPPLEMENTS</span>. <span data-i18n="footer.rights">All rights reserved.</span></p>
+      </div>
+      <div>
+        <h3 class="font-semibold" data-i18n="footer.company">Company</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="about.html" class="hover:underline" data-i18n="nav.about">About</a></li>
+          <li><a href="mailto:hi@serious-supp.com" class="hover:underline" data-i18n="footer.contact">Contact</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.careers">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold" data-i18n="footer.legal">Legal</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline" data-i18n="footer.terms">Terms</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.privacy">Privacy</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.accessibility">Accessibility</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
@@ -259,33 +312,190 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Simple i18n map
+    const i18n = {
+      en: {
+        "meta.title": "SERIOUS SUPPLEMENTS — Pre-Workout | Clean Energy, Laser Focus",
+        "meta.desc": "SERIOUS SUPPLEMENTS makes a transparent-label pre-workout for clean energy and focus. Pixel-perfect, no-BS vibes.",
+        brand: "SERIOUS SUPPLEMENTS",
+        "nav.products": "Products",
+        "nav.science": "Science",
+        "nav.waitlist": "Waitlist",
+        "nav.about": "About",
+        "nav.faq": "❓ FAQ",
+        "hero.max_focus": "Max Focus",
+        "hero.zero_crash": "Zero Crash.",
+        "hero.desc": "SERIOUS PRE-WORKOUT by SERIOUS SUPPLEMENTS — a transparent-label formula for energy, focus, and endurance with a tongue-in-cheek pixel vibe.*",
+        "cta.join": "Join the Waitlist",
+        "cta.products": "See Products",
+        "hero.footnote": "*Statements have not been evaluated by the FDA. Product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "h.lineup": "Explore our lineup",
+        "card.pre": "Pre-Workout",
+        "card.gaming": "Gaming",
+        "card.bundles": "Bundles",
+        "card.apparel": "APPAREL",
+        "benefit.energy.h": "Sustained Energy",
+        "benefit.energy.p": "98mg caffeine (anhydrous) per serving.",
+        "benefit.pump.h": "Pump & Performance",
+        "benefit.pump.p": "Up to 6000mg L-Citrulline plus taurine and L-Tyrosine.*",
+        "benefit.bvit.h": "B-Vitamin Support",
+        "benefit.bvit.p": "Vitamin B6 and B12 at 200% NRV.",
+        "h.transparent": "Transparent ingredients",
+        "p.transparent": "We don't hide behind proprietary blends. We believe in 100% transparency, so you see every single ingredient and its exact dose. Just clean, effective formulas you can trust.",
+        "h.science": "Scientific formulation",
+        "p.science": "Every ingredient is chosen based on proven, human studies — not marketing fads. We're 100% transparent about our science and will never make exaggerated health claims. We just make what works.",
+        "h.reviews": "What athletes say",
+        "review.1": "“Smooth energy and no jitters. New PRs already.”",
+        "review.1.by": "— Alex R., coach",
+        "review.2": "“Ingredients are fully disclosed. Tastes great.”",
+        "review.2.by": "— Priya T.",
+        "review.3": "“My go-to before long runs.”",
+        "review.3.by": "— Chris L.",
+        "h.waitlist": "Join the Waitlist",
+        "p.waitlist": "Drop your email to be first in line. We’ll send a single launch alert. No spam. Promise.",
+        "form.email": "Email",
+        "form.submit": "Submit",
+        "aside.whatsinside": "What’s inside",
+        "aside.li1": "30 servings per tub",
+        "aside.li2": "Net wt. 360 g",
+        "aside.li3": "Manufactured for SERIOUS SUPPLEMENTS, CHINA",
+        "aside.li4": "Questions? ",
+        "h.faq": "FAQ",
+        "faq.q1": "Is SERIOUS PRE-WORKOUT third-party tested?",
+        "faq.a1": "Yes. Every lot is tested for identity, purity, strength, and composition prior to release.",
+        "faq.q2": "Can I stack it with other caffeine sources?",
+        "faq.a2": "We do not recommend using other caffeine sources concurrently. Total caffeine from all sources should be monitored.",
+        "faq.q3": "Do you make disease treatment claims?",
+        "faq.a3": "No. We avoid disease claims and advertise responsibly per FTC guidance. Statements on this site are not evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease.",
+        "faq.q4": "Should I expect any side effects from taking the pre-workout?",
+        "faq.a4": "Everything is well within safe limits and tested countless times. However, beta-alanine is famous for causing a harmless but sometimes uncomfortable tingling or itching sensation. It’s completely safe and nothing to worry about.",
+        "footer.company": "Company",
+        "footer.contact": "Contact",
+        "footer.careers": "Careers",
+        "footer.legal": "Legal",
+        "footer.terms": "Terms",
+        "footer.privacy": "Privacy",
+        "footer.accessibility": "Accessibility",
+        "footer.rights": "All rights reserved.",
+        "footer.copyrightPrefix": "©"
+      },
+      zh: {
+        "meta.title": "SERIOUS SUPPLEMENTS — 预训练｜清爽能量，专注不崩",
+        "meta.desc": "SERIOUS SUPPLEMENTS 以透明配方打造预训练，干净能量与专注表现，像素风但不玩虚的。",
+        brand: "SERIOUS SUPPLEMENTS",
+        "nav.products": "产品",
+        "nav.science": "科学",
+        "nav.waitlist": "候补名单",
+        "nav.about": "关于",
+        "nav.faq": "❓ 常见问题",
+        "hero.max_focus": "专注拉满",
+        "hero.zero_crash": "无崩溃感。",
+        "hero.desc": "SERIOUS SUPPLEMENTS 出品的 SERIOUS 预训练——透明标签，能量、专注与耐力一应俱全，像素风格，认真配方。*",
+        "cta.join": "加入候补名单",
+        "cta.products": "查看产品",
+        "hero.footnote": "*以上陈述未经过 FDA 评估。本产品不用于诊断、治疗、治愈或预防任何疾病。",
+        "h.lineup": "探索产品线",
+        "card.pre": "预训练",
+        "card.gaming": "游戏补给",
+        "card.bundles": "套装",
+        "card.apparel": "服饰",
+        "benefit.energy.h": "持久能量",
+        "benefit.energy.p": "每份含 98mg 无水咖啡因。",
+        "benefit.pump.h": "泵感与表现",
+        "benefit.pump.p": "最高 6000mg L-瓜氨酸，加牛磺酸与 L-酪氨酸。*",
+        "benefit.bvit.h": "B 族维生素支持",
+        "benefit.bvit.p": "维生素 B6、B12 各达 200% NRV。",
+        "h.transparent": "配方透明",
+        "p.transparent": "拒绝专有混合，所有成分与剂量全部公开透明。干净、有效、值得信赖。",
+        "h.science": "科学配方",
+        "p.science": "以可靠的人体研究为依据，而非营销噱头；如实呈现科学，不夸大功效。",
+        "h.reviews": "运动员怎么说",
+        "review.1": "“能量顺滑不心慌，成绩立刻有提升。”",
+        "review.1.by": "— Alex R.，教练",
+        "review.2": "“成分全公开，口感也不错。”",
+        "review.2.by": "— Priya T.",
+        "review.3": "“长跑前的固定选择。”",
+        "review.3.by": "— Chris L.",
+        "h.waitlist": "加入候补名单",
+        "p.waitlist": "留下邮箱优先获知开售，仅发送一次上新通知，不打扰。",
+        "form.email": "邮箱",
+        "form.submit": "提交",
+        "aside.whatsinside": "产品信息",
+        "aside.li1": "每罐 30 份",
+        "aside.li2": "净含量 360 克",
+        "aside.li3": "由中国为 SERIOUS SUPPLEMENTS 生产",
+        "aside.li4": "有问题？",
+        "h.faq": "常见问题",
+        "faq.q1": "SERIOUS 预训练是否通过第三方检测？",
+        "faq.a1": "是的。每一批次在上市前均进行成分鉴定、纯度、含量与一致性检测。",
+        "faq.q2": "能与其他咖啡因来源一起使用吗？",
+        "faq.a2": "不建议与其他咖啡因来源同用，请关注总咖啡因摄入量。",
+        "faq.q3": "你们是否做疾病治疗相关的宣称？",
+        "faq.a3": "不会。我们遵循监管指南，拒绝疾病治疗宣称。上述声明未获 FDA 评估，本产品不用于诊断、治疗、治愈或预防任何疾病。",
+        "faq.q4": "使用预训练是否会有副作用？",
+        "faq.a4": "配方在安全范围内并反复测试。β-丙氨酸可能带来轻微刺痒的无害感受，属正常现象。",
+        "footer.company": "公司",
+        "footer.contact": "联系方式",
+        "footer.careers": "招聘",
+        "footer.legal": "法务",
+        "footer.terms": "条款",
+        "footer.privacy": "隐私",
+        "footer.accessibility": "无障碍",
+        "footer.rights": "保留所有权利。",
+        "footer.copyrightPrefix": "©"
+      }
+    };
+
     // Theme boot + toggle (prefers-color-scheme + localStorage)
     (function(){
       const key='theme', root=document.documentElement;
-      function set(v){
+      function setTheme(v){
         v==='dark' ? root.classList.add('dark') : root.classList.remove('dark');
         localStorage.setItem(key, v);
         const btn=document.getElementById('theme-toggle');
         if(btn){ btn.setAttribute('aria-pressed', v==='dark'); btn.textContent = v==='dark' ? '🕹️ Arcade' : '🌞 Light'; }
       }
       const saved=localStorage.getItem(key);
-      if(saved){ set(saved); }
-      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ set('dark'); }
-      else { set('light'); }
-      document.getElementById('theme-toggle')?.addEventListener('click', ()=> set(root.classList.contains('dark') ? 'light' : 'dark'));
+      if(saved){ setTheme(saved); }
+      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ setTheme('dark'); }
+      else { setTheme('light'); }
+      document.getElementById('theme-toggle')?.addEventListener('click', ()=> setTheme(root.classList.contains('dark') ? 'light' : 'dark'));
     })();
 
-    // Language boot + menu (localStorage + html[lang])
+    // Apply translations to all [data-i18n] nodes
+    function applyI18n(lang){
+      const dict = i18n[lang] || i18n.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(!key) return;
+        const val = dict[key];
+        if(typeof val === 'string'){
+          // Preserve leading/trailing spaces if present
+          el.textContent = val;
+        }
+      });
+      // Title + meta description
+      if(dict["meta.title"]) document.title = dict["meta.title"];
+      const m = document.querySelector('meta[name="description"]');
+      if(m && dict["meta.desc"]) m.setAttribute('content', dict["meta.desc"]);
+    }
+
+    // Language boot + menu (localStorage + html[lang] + i18n)
     (function(){
       const key='lang', root=document.documentElement, btn=document.getElementById('lang-toggle'), menu=document.getElementById('lang-menu');
       function setLang(v){
         const map = { en:'en', zh:'zh-CN' };
-        root.setAttribute('lang', map[v] || 'en');
-        localStorage.setItem(key, v);
-        if(btn){ btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language'); btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language'; }
+        const lang = (v==='zh') ? 'zh' : 'en';
+        root.setAttribute('lang', map[lang]);
+        localStorage.setItem(key, lang);
+        // Button label
+        if(btn){ btn.setAttribute('aria-label', lang==='zh' ? '语言' : 'Language'); btn.textContent = lang==='zh' ? '🌐 语言' : '🌐 Language'; }
+        // Apply translations
+        applyI18n(lang);
       }
       const saved=localStorage.getItem(key) || 'en';
       setLang(saved);
+
       btn?.addEventListener('click', ()=>{
         const open=menu?.classList.contains('hidden')===false;
         menu?.classList.toggle('hidden');
@@ -305,7 +515,3 @@
   </script>
 </body>
 </html>
-
-
-
-

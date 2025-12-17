@@ -23,6 +23,23 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    /* Pixel Chinese font — place your dotted/pixel Chinese font at these paths */
+    @font-face{
+      font-family:'PixelZh';
+      src: url('/fonts/zpix.woff2') format('woff2'),
+           url('/fonts/zpix.woff') format('woff');
+      font-display: swap;
+    }
+    /* Use pixel Chinese font whenever lang is zh-CN */
+    html[lang="zh-CN"] body,
+    html[lang="zh-CN"] .font-display,
+    html[lang="zh-CN"] .font-body,
+    html[lang="zh-CN"] h1, html[lang="zh-CN"] h2, html[lang="zh-CN"] h3, html[lang="zh-CN"] h4, html[lang="zh-CN"] h5, html[lang="zh-CN"] h6,
+    html[lang="zh-CN"] a, html[lang="zh-CN"] button, html[lang="zh-CN"] p, html[lang="zh-CN"] li {
+      font-family:'PixelZh','Noto Sans SC','Microsoft YaHei',system-ui,sans-serif !important;
+      letter-spacing:.02em;
+    }
+
     html:focus-within{scroll-behavior:smooth}
     :focus-visible{outline:3px solid #12c26b;outline-offset:3px}
     .pixel-bg{background-image:linear-gradient(0deg,rgba(18,194,107,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,194,107,.08) 1px,transparent 1px);background-size:16px 16px}
@@ -37,35 +54,38 @@
 <body class="bg-white dark:bg-arcade-bg text-slate-900 dark:text-slate-100 font-body pixel-bg">
   <!-- Header -->
   <header class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative z-40">
-    <a href="index.html#top" class="flex items-center gap-3" aria-label="Home"><div class="pixel-logo"></div><span class="font-display text-sm md:text-base font-bold">SERIOUS SUPPLEMENTS</span></a>
+    <a href="index.html#top" class="flex items-center gap-3" aria-label="Home">
+      <div class="pixel-logo"></div>
+      <span class="font-display text-sm md:text-base font-bold" data-i18n="brand">SERIOUS SUPPLEMENTS</span>
+    </a>
     <nav aria-label="Primary" class="hidden md:flex gap-6 text-xs">
-      <a href="products.html" class="hover:text-brand-700">Products</a>
-      <a href="science.html" class="hover:text-brand-700">Science</a>
-      <a href="index.html#waitlist" class="hover:text-brand-700">Waitlist</a>
-      <a href="about.html" class="hover:text-brand-700 underline">About</a>
+      <a href="products.html" class="hover:text-brand-700" data-i18n="nav.products">Products</a>
+      <a href="science.html" class="hover:text-brand-700" data-i18n="nav.science">Science</a>
+      <a href="index.html#waitlist" class="hover:text-brand-700" data-i18n="nav.waitlist">Waitlist</a>
+      <a href="about.html" class="hover:text-brand-700 underline" data-i18n="nav.about">About</a>
     </nav>
     <div class="flex items-center gap-3">
       <button id="theme-toggle" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-pressed="false">🕹️ Arcade</button>
       <div class="relative z-50" id="lang-wrap">
-        <button id="lang-toggle" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-expanded="false">🌐 Language</button>
+        <button id="lang-toggle" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" aria-expanded="false" aria-label="Language">🌐 Language</button>
         <div id="lang-menu" class="absolute right-0 mt-2 w-40 bg-white dark:bg-arcade-panel border-[3px] border-slate-900 dark:border-arcade-line shadow-[4px_4px_0_0_rgba(0,0,0,0.4)] hidden z-50">
           <button data-lang="en" class="block w-full text-left px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">English</button>
           <button data-lang="zh" class="block w-full text-left px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">中文</button>
         </div>
       </div>
       <!-- FAQ always goes to main page FAQ -->
-      <button id="faq-top" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" onclick="window.location.href='index.html#faq'">❓ FAQ</button>
+      <button id="faq-top" class="inline-flex items-center justify-center px-3 py-2 pixel-btn bg-white dark:bg-slate-900 border border-slate-300 dark:border-arcade-line text-xs" onclick="window.location.href='index.html#faq'" data-i18n="nav.faq">❓ FAQ</button>
     </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4 py-14">
-    <h1 class="font-display text-2xl md:text-4xl font-extrabold">About</h1>
-    <p class="mt-3 text-sm md:text-base text-slate-300">We make transparent-label performance nutrition with a cheeky 8-bit edge.</p>
+    <h1 class="font-display text-2xl md:text-4xl font-extrabold" data-i18n="h.about">About</h1>
+    <p class="mt-3 text-sm md:text-base text-slate-300" data-i18n="p.tagline">We make transparent-label performance nutrition with a cheeky 8-bit edge.</p>
 
     <!-- Founder module -->
     <section class="mt-8 pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-      <h2 class="font-display text-xl md:text-2xl font-bold">Founder</h2>
-      <!-- Reduced gap from 8 to 4 -->
+      <h2 class="font-display text-xl md:text-2xl font-bold" data-i18n="h.founder">Founder</h2>
+      <!-- Reduced gap from 8 to 4 (already applied) -->
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center text-center">
         <!-- Dangchi Li -->
         <div class="flex flex-col items-center">
@@ -86,8 +106,8 @@
 
     <!-- Careers module -->
     <section class="mt-6 pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-      <h2 class="font-display text-xl md:text-2xl font-bold">Careers</h2>
-      <p class="mt-3 text-sm md:text-base">
+      <h2 class="font-display text-xl md:text-2xl font-bold" data-i18n="h.careers">Careers</h2>
+      <p class="mt-3 text-sm md:text-base" data-i18n="p.careers">
         We’re actively hiring people who believe in our mission. If that’s you, send your resume to
         <a href="mailto:hire@serioussupplements.com" class="underline">hire@serioussupplements.com</a>.
       </p>
@@ -96,31 +116,131 @@
     <!-- Existing two-column content -->
     <div class="mt-10 grid md:grid-cols-2 gap-10 items-start">
       <div class="pixel-card p-6 bg-white dark:bg-arcade-panel dark:shadow-arcade">
-        <h2 class="font-semibold text-base">Our promise</h2>
+        <h2 class="font-semibold text-base" data-i18n="h.promise">Our promise</h2>
         <ul class="mt-3 list-disc pl-5 text-sm">
-          <li>Clearly disclosed ingredients and dosages</li>
-          <li>Third-party testing on every lot</li>
-          <li>Responsible marketing—no disease claims</li>
+          <li data-i18n="promise.li1">Clearly disclosed ingredients and dosages</li>
+          <li data-i18n="promise.li2">Third-party testing on every lot</li>
+          <li data-i18n="promise.li3">Responsible marketing—no disease claims</li>
         </ul>
       </div>
       <div>
-        <h2 class="font-display text-2xl md:text-3xl font-bold">Where we’re headed</h2>
-        <p class="mt-3 text-sm">From preworkout to daily health stack—always clean, always serious about quality.</p>
-        <a href="index.html#waitlist" class="mt-4 inline-block px-4 py-2 pixel-btn border border-slate-900 bg-white dark:bg-slate-900">Join the waitlist</a>
+        <h2 class="font-display text-2xl md:text-3xl font-bold" data-i18n="h.future">Where we’re headed</h2>
+        <p class="mt-3 text-sm" data-i18n="p.future">From preworkout to daily health stack—always clean, always serious about quality.</p>
+        <a href="index.html#waitlist" class="mt-4 inline-block px-4 py-2 pixel-btn border border-slate-900 bg-white dark:bg-slate-900" data-i18n="cta.join">Join the waitlist</a>
       </div>
     </div>
   </main>
 
   <footer class="py-12 border-t border-slate-200 dark:border-arcade-line">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-xs md:text-sm">
-      <div class="flex flex-col gap-2"><div class="flex items-center gap-3"><div class="pixel-logo"></div><span class="font-display text-sm md:text-base font-bold">SERIOUS SUPPLEMENTS</span></div><p class="text-slate-600 dark:text-slate-400">© <span id="year"></span> SERIOUS SUPPLEMENTS. All rights reserved.</p></div>
-      <div><h3 class="font-semibold">Company</h3><ul class="mt-2 space-y-2"><li><a href="about.html" class="hover:underline">About</a></li><li><a href="mailto:hi@serioussupplements.com" class="hover:underline">Contact</a></li><li><a href="#" class="hover:underline">Careers</a></li></ul></div>
-      <div><h3 class="font-semibold">Legal</h3><ul class="mt-2 space-y-2"><li><a href="#" class="hover:underline">Terms</a></li><li><a href="#" class="hover:underline">Privacy</a></li><li><a href="#" class="hover:underline">Accessibility</a></li></ul></div>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3">
+          <div class="pixel-logo"></div>
+          <span class="font-display text-sm md:text-base font-bold" data-i18n="brand">SERIOUS SUPPLEMENTS</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400">
+          <span data-i18n="footer.copyrightPrefix">©</span> <span id="year"></span> <span data-i18n="brand">SERIOUS SUPPLEMENTS</span>. <span data-i18n="footer.rights">All rights reserved.</span>
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold" data-i18n="footer.company">Company</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="about.html" class="hover:underline" data-i18n="nav.about">About</a></li>
+          <li><a href="mailto:hi@serioussupplements.com" class="hover:underline" data-i18n="footer.contact">Contact</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.careers">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold" data-i18n="footer.legal">Legal</h3>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline" data-i18n="footer.terms">Terms</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.privacy">Privacy</a></li>
+          <li><a href="#" class="hover:underline" data-i18n="footer.accessibility">Accessibility</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // i18n dictionary
+    const i18n = {
+      en: {
+        "meta.title": "About — SERIOUS SUPPLEMENTS",
+        brand: "SERIOUS SUPPLEMENTS",
+        "nav.products": "Products",
+        "nav.science": "Science",
+        "nav.waitlist": "Waitlist",
+        "nav.about": "About",
+        "nav.faq": "❓ FAQ",
+
+        "h.about": "About",
+        "p.tagline": "We make transparent-label performance nutrition with a cheeky 8-bit edge.",
+
+        "h.founder": "Founder",
+
+        "h.careers": "Careers",
+        "p.careers": "We’re actively hiring people who believe in our mission. If that’s you, send your resume to ",
+        // (email stays as-is in the markup)
+
+        "h.promise": "Our promise",
+        "promise.li1": "Clearly disclosed ingredients and dosages",
+        "promise.li2": "Third-party testing on every lot",
+        "promise.li3": "Responsible marketing—no disease claims",
+
+        "h.future": "Where we’re headed",
+        "p.future": "From preworkout to daily health stack—always clean, always serious about quality.",
+        "cta.join": "Join the waitlist",
+
+        "footer.company": "Company",
+        "footer.contact": "Contact",
+        "footer.careers": "Careers",
+        "footer.legal": "Legal",
+        "footer.terms": "Terms",
+        "footer.privacy": "Privacy",
+        "footer.accessibility": "Accessibility",
+        "footer.rights": "All rights reserved.",
+        "footer.copyrightPrefix": "©"
+      },
+      zh: {
+        "meta.title": "关于 — SERIOUS SUPPLEMENTS",
+        brand: "SERIOUS SUPPLEMENTS",
+        "nav.products": "产品",
+        "nav.science": "实验依据",
+        "nav.waitlist": "候补名单",
+        "nav.about": "关于我们",
+        "nav.faq": "❓ 常见问题",
+
+        "h.about": "关于我们",
+        "p.tagline": "我们做透明标签的运动营养补剂。我们的配方是认真的。",
+
+        "h.founder": "创始人",
+
+        "h.careers": "招聘",
+        "p.careers": "我们在寻找与使命同频的人。如果你就是，欢迎把简历发送至 hire@serioussupplements.com ",
+
+        "h.promise": "我们的承诺",
+        "promise.li1": "成分与剂量透明公开",
+        "promise.li2": "每一批次均通过第三方检测",
+        "promise.li3": "负责任的营销",
+
+        "h.future": "我们的方向",
+        "p.future": "从预训练到日常健康配方 — 始终干净，始终严肃对待品质。",
+        "cta.join": "加入候补名单",
+
+        "footer.company": "公司",
+        "footer.contact": "联系方式",
+        "footer.careers": "招聘",
+        "footer.legal": "法务",
+        "footer.terms": "条款",
+        "footer.privacy": "隐私",
+        "footer.accessibility": "无障碍",
+        "footer.rights": "保留所有权利。",
+        "footer.copyrightPrefix": "©"
+      }
+    };
 
     // Theme toggle (persisted)
     (function(){
@@ -137,20 +257,38 @@
       b?.addEventListener('click', ()=> set(r.classList.contains('dark') ? 'light' : 'dark'));
     })();
 
-    // Language menu (persisted)
+    // Apply translations to all [data-i18n] nodes
+    function applyI18n(lang){
+      const dict = i18n[lang] || i18n.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(!key) return;
+        const val = dict[key];
+        if(typeof val === 'string'){
+          el.textContent = val;
+        }
+      });
+      // Update <title>
+      if(dict["meta.title"]) document.title = dict["meta.title"];
+    }
+
+    // Language menu (persisted) + i18n
     (function(){
       const k='lang', root=document.documentElement, btn=document.getElementById('lang-toggle'), menu=document.getElementById('lang-menu');
       function setLang(v){
         const map={en:'en', zh:'zh-CN'};
-        root.setAttribute('lang', map[v]||'en');
-        localStorage.setItem(k, v);
+        const lang = (v==='zh') ? 'zh' : 'en';
+        root.setAttribute('lang', map[lang]||'en');
+        localStorage.setItem(k, lang);
         if(btn){
-          btn.setAttribute('aria-label', v==='zh' ? '语言' : 'Language');
-          btn.textContent = v==='zh' ? '🌐 语言' : '🌐 Language';
+          btn.setAttribute('aria-label', lang==='zh' ? '语言' : 'Language');
+          btn.textContent = lang==='zh' ? '🌐 语言' : '🌐 Language';
         }
+        applyI18n(lang);
       }
       const saved=localStorage.getItem(k) || 'en';
       setLang(saved);
+
       btn?.addEventListener('click', ()=>{
         const open = menu?.classList.contains('hidden')===false;
         menu?.classList.toggle('hidden');

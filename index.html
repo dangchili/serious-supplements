@@ -26,12 +26,15 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Preload the local pixel Chinese font -->
+  <link rel="preload" as="font" href="fonts/zpix.ttf" type="font/ttf" crossorigin>
+
   <style>
-    /* ===== Pixel Chinese font (drop your dotted pixel Chinese font at /fonts/zpix.woff2) ===== */
+    /* ===== Local Pixel Chinese font (place zpix.ttf at /fonts/zpix.ttf) ===== */
     @font-face{
       font-family: 'PixelZh';
-      src: url('/fonts/zpix.woff2') format('woff2'),
-           url('/fonts/zpix.woff') format('woff');
+      src: url('fonts/zpix.ttf') format('truetype');
       font-display: swap;
     }
 
@@ -51,7 +54,7 @@
     .dark .border-slate-200{border-color:#334155 !important;}
     .dark .shadow-arcade{box-shadow:0 0 12px rgba(18,194,107,.35);} 
 
-    /* When Chinese is active, force pixel Chinese font (with safe fallbacks) */
+    /* Force pixel Chinese font when zh-CN is active */
     html[lang="zh-CN"] body,
     html[lang="zh-CN"] .font-display,
     html[lang="zh-CN"] .font-body,
@@ -62,6 +65,7 @@
       letter-spacing: 0.02em;
     }
   </style>
+
   <script type="application/ld+json">
   {
     "@context":"https://schema.org","@type":"Product",
@@ -470,7 +474,6 @@
         if(!key) return;
         const val = dict[key];
         if(typeof val === 'string'){
-          // Preserve leading/trailing spaces if present
           el.textContent = val;
         }
       });
@@ -515,7 +518,3 @@
   </script>
 </body>
 </html>
-
-
-
-
